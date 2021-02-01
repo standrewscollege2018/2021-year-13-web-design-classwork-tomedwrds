@@ -1,0 +1,19 @@
+.bg-yellow {
+  background-color: yellow;
+}
+
+.fs-40 {
+  font-size: 40px;
+}
+
+@media screen and (max-width: 800px) {
+  .display-3 {
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .display-3 {
+    font-size: 30px;
+  }
+}
