@@ -1,0 +1,15 @@
+a:visited {
+  color: white;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.bg-stac {
+  background-color: #043455;
+}
+
+.text-stac {
+  color: #043455;
+}
