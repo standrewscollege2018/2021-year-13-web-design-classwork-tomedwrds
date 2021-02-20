@@ -4,7 +4,7 @@
 
     <title>Add Map</title>
     <link rel="stylesheet" href="style.css">
-    <?php include('script.php'); ?>
+    <?php include('loading-script.php'); ?>
 
   </head>
   <body>
