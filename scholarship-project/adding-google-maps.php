@@ -9,7 +9,7 @@
   </head>
   <body>
     <!--The div element for the map -->
-
+    <div id="map"></div>
 
 
     <!-- Form for adding new stuff -->
@@ -20,20 +20,50 @@
     </form>
 
     <script type="text/javascript">
-      let autocomplete;
+    // Initialize and add the map
+    // Initialize and add the map
+    function initMap() {
 
-      function initAutocomplete() {
+      // Set up and center the map on christchurch
+      const christchurch = { lat: -43.5320, lng: 172.6306 };
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 8,
+        center: christchurch
+      });
+
+        let autocomplete;
+
         autocomplete = new google.maps.places.Autocomplete(
-          document.getElementById('autocomplete')
+          document.getElementById('autocomplete'),
+          {
+            componentRestrictions: { country: "nz" },
+            fields: ["address_components", "geometry", "icon", "name"],
+          }
         );
 
+        autocomplete.addListener('place_changed',onPlaceChanged);
 
-      }
+
+        var markers = [];
+        function onPlaceChanged()
+        {
+            //Get the place info
+            var place = autocomplete.getPlace();
+            console.log(place);
+            markers.push(
+          new google.maps.Marker({
+            map,
+            title: place.name,
+            position: place.geometry.location,
+          })
+        );
+        }
+    }
+
     </script>
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMVMC-a_wlLf6JCmBptZXOgNfOu_KtaZI&libraries=places&callback=initMap"
+type="text/javascript"></script>
 
-    <script async
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMVMC-a_wlLf6JCmBptZXOgNfOu_KtaZI&libraries=places&callback=initAutocomplete">
-    </script>
 
 </html>
